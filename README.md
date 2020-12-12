@@ -5,7 +5,7 @@ A highly modular and configurable helper tool for Elite Dangerous.
 
 Installation:
 
- - Download and run `py-elite-helper.exe`
+ - Download and run [`py-elite-helper.exe`](https://github.com/RaVenInTheDark/py-elite-helper/releases/tag/0.5-alpha)
  
 
 Usage:
