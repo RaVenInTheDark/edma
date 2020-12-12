@@ -7,6 +7,9 @@ import keyboard
 import json
 import importlib
 
+print(os.getcwd())
+#os.chdir("../")
+#print(os.getcwd())
 #---------------------FOR PYGAME----------------------
 
 #-----------------------------------------------------
@@ -19,6 +22,7 @@ import importlib
 
 
 pygame.init()
+pygame.display.set_caption('EDPyHelper Alpha')
 pygame.font.init()
 screen = pygame.display.set_mode([1920, 1080], pygame.NOFRAME)
 running = True
@@ -85,16 +89,25 @@ class Main():
 
         #load modules
         for f in os.listdir():
-            if f.endswith(".py"):
-                module = importlib.import_module(f[:-3])
+            if f.endswith(".py") and f != "main.py":
+                scope = {}
                 try:
-                    for event in module.events:
-                        self.events[event.__qualname__.lower()] = event if event.__qualname__ not in ["shutdown", "fileheader"] else self.events[event.__qualname__]
+                    with open(f"./{f}") as code:
+                        exec(code.read(), scope)
 
+                    for event in scope["events"]:
+                        self.events[event.__qualname__.lower()] = event if event.__qualname__ not in ["shutdown"] else self.events[event.__qualname__]
                 except Exception as e:
                     print(e)
+                #module = importlib.import_module(f[:-3])
+                #try:
+                #    for event in module.events:
+                #        self.events[event.__qualname__.lower()] = event if event.__qualname__ not in ["shutdown", "fileheader"] else self.events[event.__qualname__]
+
+                #except Exception as e:
+                #    print(e)
         
-        print(self.events)
+        print(f"Loaded events: {self.events.keys()}")
 
         
         
@@ -128,6 +141,7 @@ class Main():
                     print(self.text)
         else:
             self.started = True
+            return "False"
 
     def shutdown(self, event):
         if not self.started:
@@ -151,20 +165,23 @@ while running:
 
 
     #PYGAME TEXT UPDATES:
-    main.run()
+    text = main.run()
 
     #local_text = overlay_font.render(main.text, True, colour)
 
     #OVERLAY DRAWS:
-    screen.fill(transparent)
+    if text != "False":
+        screen.fill(transparent)
 
-    i = 40
-    for line in main.text:
-        text = overlay_font.render(line, True, main.colour)
-        screen.blit(text, (15, i))
-        #print(i)
-        i += 30
-    pygame.display.update()
+        i = 40
+        for line in main.text:
+            text = overlay_font.render(line, True, main.colour)
+            screen.blit(text, (15, i))
+            #print(i)
+            i += 30
+        pygame.display.update()
+    
+
 
 
 
