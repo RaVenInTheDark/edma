@@ -48,3 +48,5 @@ There are two small extension examples provided.
  - An error during startup such as `<class 'ErrorType'>ErrorDescription While running eventname` indicates that there's an issue with an extension. Check what extensions use the event name, and where an error of the given type could occur. Contact the extension developer for help if need be.
  
  - It is safe to ignore a lack of text before the game boots, and text should display once the game does boot.
+ 
+ - If you get a popup saying `Windows SmartScreen protected your PC`, it is safe to click `More info` then `Run anyway`. This popup appears because the code is unsigned. If you don't trust the exe download, feel free to download and run the `main.py` code instead, or build it from source.
