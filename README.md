@@ -32,7 +32,8 @@ Note that this will be heavily improved in upcoming updates.
 - **PROVIDED MODULES**: `os`, `keyboard`, `clipboard`, `json`, `csv`, `requests` and all of their requirements. Any present modules not in this list are not intended to be available, and may have side effects if used, although they can be useful.
 
 - **RULES FOR EVENT RESPONSES**: 
- - Event responses are defined as functions, and are passed a single dictionary. This contains the event type, but also all data the game provides for the event in question. 
- - Events must return a singular string if text is to be displayed. This can contain newline characters. If you do not wish to update the overlay text, return `None`.
- - Function names must be completely lowercase, and match a valid name. If an event is registered that doesn't match a valid name,
- - Events are registered with a single list at the end of the extension file, containing all functions.
+ -- Event responses are defined as functions, and are passed a single dictionary. This contains the event type, but also all data the game provides for the event in question. 
+ -- Events must return a singular string if text is to be displayed. This can contain newline characters. If you do not wish to update the overlay text, return `None`.
+ -- Function names must be completely lowercase, and match a valid name. If an event is registered that doesn't match a valid name,
+ -- Events are registered with a single list at the end of the extension file, containing all functions.
+ -- A detailed guide to all valid event names, along with some examples, can be found [here](https://github.com/RaVenInTheDark/edma/blob/master/Journal_Manual_v28.pdf).
