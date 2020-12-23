@@ -38,3 +38,13 @@ Note that this will be heavily improved in upcoming updates.
  - Function names must be completely lowercase, and match a valid name. If an event is registered that doesn't match a valid name,
  - Events are registered with a single list at the end of the extension file, containing all functions.
  - A detailed guide to all valid event names, along with some examples, can be found [here](https://github.com/RaVenInTheDark/edma/blob/master/Journal_Manual_v28.pdf).
+ 
+There are two small extension examples provided. 
+
+
+**TROUBLESHOOTING**
+ - An error during startup along the lines of `Error loading extension_name.py: 'events'` indicates that the extension mentioned doesn't provide a list of events.
+
+ - An error during startup such as `<class 'ErrorType'>ErrorDescription While running eventname` indicates that there's an issue with an extension. Check what extensions use the event name, and where an error of the given type could occur. Contact the extension developer for help if need be.
+ 
+ - It is safe to ignore a lack of text before the game boots, and text should display once the game does boot.
